@@ -31,15 +31,9 @@
 import os
 
 def find(path="./tree", dir="python"):
-
-    path = os.path.basename(path)
-    if path == dir:
-        print(os.path.abspath(path))
-    else:
-        os.chdir(os.path.abspath(path))
-        directories = os.listdir()
-        for d in directories:
-            find(d)
-
+    relPath = os.path.abspath(path)
+    for p in os.walk(relPath):
+        if os.path.basename(p[0]) == dir:
+            print(p[0])
 
 find()
