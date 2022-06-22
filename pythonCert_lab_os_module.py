@@ -32,8 +32,8 @@ import os
 
 def find(path="./tree", dir="python"):
     relPath = os.path.abspath(path)
-    for p in os.walk(relPath):
-        if os.path.basename(p[0]) == dir:
-            print(p[0])
+    for dirpath, dirnames, filenames in os.walk(relPath):
+        if os.path.basename(dirpath) == dir:
+            print(dirpath)
 
 find()
